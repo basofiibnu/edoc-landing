@@ -5,6 +5,8 @@ import Metrics from '../../organisms/Metrics';
 import Features from '../../organisms/Features';
 import Team from '../../organisms/Team';
 import Products from '../../organisms/Products';
+import Subscription from '../../organisms/Subscription';
+import Footer from '../../atoms/Footer';
 
 const Homepage = () => {
   return (
@@ -15,6 +17,8 @@ const Homepage = () => {
       <Features />
       <Team />
       <Products />
+      <Subscription />
+      <Footer />
     </section>
   );
 };
