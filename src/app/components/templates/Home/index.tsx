@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Header from '../../atoms/Header';
 import Hero from '../../organisms/Hero';
