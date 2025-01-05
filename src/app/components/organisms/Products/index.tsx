@@ -29,7 +29,6 @@ const Products = () => {
       productData &&
       imageData
     ) {
-      // Ensure both data sources are arrays
       const validProductData = Array.isArray(productData?.data)
         ? productData.data
         : [];
@@ -37,7 +36,6 @@ const Products = () => {
         ? imageData.data
         : [];
 
-      // Create the ID-to-Name map
       const idNameMap = Object.fromEntries(
         validProductData.map((item: { id: string; name: string }) => [
           item.id,
@@ -45,7 +43,6 @@ const Products = () => {
         ])
       );
 
-      // Combine the data
       const result: TProductItem[] = [];
       validImageData.forEach((group: TProductItem) => {
         if (Array.isArray(group.id)) {
