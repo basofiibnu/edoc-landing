@@ -6,15 +6,9 @@ type TTitle = {
   classname?: string;
 };
 
-const Title: React.FC<TTitle> = ({
-  content,
-  size = '70',
-  classname,
-}) => {
+const Title: React.FC<TTitle> = ({ content, classname }) => {
   return (
-    <h1
-      className={`text-[#1F1F39] font-bold leading-[80px] text-[${size}px] ${classname}`}
-    >
+    <h1 className={`text-[#1F1F39] font-bold  ${classname}`}>
       {content}
     </h1>
   );
