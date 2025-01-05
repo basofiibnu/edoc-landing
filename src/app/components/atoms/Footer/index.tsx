@@ -1,11 +1,21 @@
 import React from 'react';
 import Description from '../Description';
+import { useInView, motion } from 'framer-motion';
+import { fadeUpVariants } from '@/app/lib/constants';
 
 const Footer = () => {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true });
   return (
-    <footer className="py-8 2xl:py-20">
-      <div className="container mx-auto px-6 2xl:px-16">
-        <div className="grid grid-cols-2 2xl:grid-cols-5 gap-6 2xl:gap-24">
+    <footer ref={ref} className="py-8 2xl:py-20">
+      <motion.div
+        initial="hidden"
+        animate={isInView ? 'visible' : 'hidden'}
+        variants={fadeUpVariants}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="container mx-auto px-6 2xl:px-16"
+      >
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 2xl:gap-24">
           <div className="flex flex-col gap-4 items-start col-span-2">
             <img alt="logo" src="/logo.svg" />
             <Description
@@ -88,11 +98,17 @@ const Footer = () => {
             />
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="pt-4 2xl:pt-8 border-t-2 border-t-[#EBECEF] mt-4 2xl:mt-16">
+      <motion.div
+        initial="hidden"
+        animate={isInView ? 'visible' : 'hidden'}
+        variants={fadeUpVariants}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="pt-4 2xl:pt-8 border-t-2 border-t-[#EBECEF] mt-4 2xl:mt-16"
+      >
         <div className="container mx-auto px-6 2xl:px-16">
-          <div className="flex flex-col 2xl:flex-row items-start 2xl:items-center justify-start 2xl:justify-between gap-4 2xl:gap-0">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-start lg:justify-between gap-4 2xl:gap-0">
             <Description
               content="Copyright © 2024 basofiiibnu@edotlanding. All rights reserved."
               classname="text-xs 2xl:text-[18px] leading-6 2xl:leading-9 font-semibold"
@@ -116,7 +132,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 };

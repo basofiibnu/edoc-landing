@@ -1,3 +1,4 @@
+import { navLinks } from '@/app/lib/constants';
 import React, { useState } from 'react';
 
 const Navbar = () => {
@@ -18,22 +19,16 @@ const Navbar = () => {
           />
         </div>
         <nav className="hidden xl:flex space-x-10 items-center">
-          {[
-            'Home',
-            'About Us',
-            'Our Services',
-            'Pricings',
-            'Blogs',
-          ].map((item, index) => (
+          {navLinks.map((item) => (
             <div
-              key={index}
+              key={item.id}
               className={`${
-                index !== 0
+                item.id !== 1
                   ? 'text-[#6B7280] font-normal'
                   : 'font-semibold'
               } tracking-wider text-base transition-all duration-100 ease-in-out hover:text-[#000]`}
             >
-              <a href="#">{item}</a>
+              <a href={item.link}>{item.name}</a>
             </div>
           ))}
           <div>
@@ -67,18 +62,12 @@ const Navbar = () => {
       {isOpen && (
         <nav className="xl:hidden bg-white">
           <div className="container mx-auto px-6 pb-8 flex flex-col space-y-4">
-            {[
-              'Home',
-              'About Us',
-              'Our Services',
-              'Pricings',
-              'Blogs',
-            ].map((item, index) => (
+            {navLinks.map((item) => (
               <div
-                key={index}
+                key={item.id}
                 className="text-[#6B7280] font-normal tracking-wider text-base transition-all duration-100 ease-in-out hover:text-[#000]"
               >
-                <a href="#">{item}</a>
+                <a href={item.link}>{item.name}</a>
               </div>
             ))}
             <div>

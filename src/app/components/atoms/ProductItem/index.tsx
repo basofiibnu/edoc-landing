@@ -38,7 +38,7 @@ const ProductItem: React.FC<TProductItem> = ({ name, image, id }) => {
         <Button
           onClick={openModal}
           title="View Image"
-          classname="capitalize bg-white text-[#6D3FFF] border border-[#6D3FFF] text-xs 2xl:text-xl"
+          classname="capitalize bg-white !text-[#6D3FFF] border border-[#6D3FFF] text-xs 2xl:text-xl"
         />
       </div>
 

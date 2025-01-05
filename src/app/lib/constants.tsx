@@ -108,3 +108,36 @@ export const FeatureLists = [
     desc: 'Our dedicated support team is available around the clock',
   },
 ];
+
+export const navLinks = [
+  {
+    id: 1,
+    name: 'Home',
+    link: '#home',
+  },
+  {
+    id: 2,
+    name: 'Features',
+    link: '#features',
+  },
+  {
+    id: 3,
+    name: 'Teams',
+    link: '#teams',
+  },
+  {
+    id: 4,
+    name: 'Products',
+    link: '#products',
+  },
+  {
+    id: 5,
+    name: 'Subscriptions',
+    link: '#subscriptions',
+  },
+];
+
+export const fadeUpVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};

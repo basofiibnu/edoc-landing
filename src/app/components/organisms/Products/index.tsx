@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Title from '../../atoms/Title';
 import Description from '../../atoms/Description';
 import ProductItem from '../../atoms/ProductItem';
 import useFetch from '@/app/lib/hooks';
 import { TProductItem } from '@/app/lib/types';
 import ProductItemSkeleton from '../../atoms/ProductItem/Skeleton';
+import { useInView, motion } from 'framer-motion';
+import { fadeUpVariants } from '@/app/lib/constants';
 
 const Products = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   const { data: productData, loading: productLoading } = useFetch(
     'https://www.giovankov.com/api/product.json'
   );
@@ -32,8 +36,6 @@ const Products = () => {
       const validImageData = Array.isArray(imageData?.data)
         ? imageData.data
         : [];
-
-      console.log(productData, imageData);
 
       // Create the ID-to-Name map
       const idNameMap = Object.fromEntries(
@@ -62,8 +64,14 @@ const Products = () => {
   }, [productLoading, imageLoading, productData, imageData]);
 
   return (
-    <section id="products" className="py-8 2xl:py-20">
-      <div className="container mx-auto  px-6 2xl:px-16">
+    <section ref={ref} id="products" className="py-8 2xl:py-20">
+      <motion.div
+        initial="hidden"
+        animate={isInView ? 'visible' : 'hidden'}
+        variants={fadeUpVariants}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="container mx-auto  px-6 2xl:px-16"
+      >
         <div className="flex flex-col items-center gap-3">
           <Title
             content="Our Products"
@@ -75,7 +83,7 @@ const Products = () => {
           />
         </div>
 
-        <div className="grid grid-cols-2 2xl:grid-cols-4 gap-2 2xl:gap-8 mt-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-2 md:gap-4 2xl:gap-8 mt-10">
           {productLoading && imageLoading ? (
             <>
               <ProductItemSkeleton />
@@ -90,7 +98,7 @@ const Products = () => {
             ))
           )}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
