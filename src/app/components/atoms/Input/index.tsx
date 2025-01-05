@@ -10,7 +10,7 @@ const Input: React.FC<TInput> = ({ type = 'text', placeholder }) => {
     <input
       type={type}
       placeholder={placeholder}
-      className="w-full outline-none text-lg font-medium text-[#1F1F39] placeholder:text-[#1F1F39] placeholder:opacity-50"
+      className="w-full outline-none text-sm 2xl:text-lg font-medium text-[#1F1F39] placeholder:text-[#1F1F39] placeholder:opacity-50"
     />
   );
 };

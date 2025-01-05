@@ -62,17 +62,20 @@ const Products = () => {
   }, [productLoading, imageLoading, productData, imageData]);
 
   return (
-    <section id="products" className="py-16">
-      <div className="container mx-auto px-16">
+    <section id="products" className="py-8 2xl:py-20">
+      <div className="container mx-auto  px-6 2xl:px-16">
         <div className="flex flex-col items-center gap-3">
-          <Title content="Our Products" classname="text-center" />
+          <Title
+            content="Our Products"
+            classname="text-[36px] leading-[44px] 2xl:text-[70px] 2xl:leading-[80px] text-center"
+          />
           <Description
             content="Brace yourself for an extraordinary journey into our products of technology."
-            classname="text-center"
+            classname="text-[18px] leading-6 2xl:text-[24px] 2xl:leading-10 text-center"
           />
         </div>
 
-        <div className="grid grid-cols-4 gap-8 mt-10">
+        <div className="grid grid-cols-2 2xl:grid-cols-4 gap-2 2xl:gap-8 mt-10">
           {productLoading && imageLoading ? (
             <>
               <ProductItemSkeleton />
