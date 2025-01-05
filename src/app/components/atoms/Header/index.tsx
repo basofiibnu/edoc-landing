@@ -1,4 +1,5 @@
 import { navLinks } from '@/app/lib/constants';
+import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
 
 const Navbar = () => {
@@ -59,25 +60,30 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      {isOpen && (
-        <nav className="xl:hidden bg-white">
-          <div className="container mx-auto px-6 pb-8 flex flex-col space-y-4">
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="xl:hidden bg-white w-full px-6"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            layout
+          >
             {navLinks.map((item) => (
               <div
                 key={item.id}
-                className="text-[#6B7280] font-normal tracking-wider text-base transition-all duration-100 ease-in-out hover:text-[#000]"
+                className={`${
+                  item.id !== 1
+                    ? 'text-[#6B7280] font-normal'
+                    : 'font-semibold'
+                } text-center tracking-wider text-base transition-all duration-100 ease-in-out hover:text-[#000] hover:bg-slate-200 py-2 rounded-md`}
               >
                 <a href={item.link}>{item.name}</a>
               </div>
             ))}
-            <div>
-              <button className="bg-[#DEE9F3] py-2 px-4 rounded-lg text-base text-[#312D47] uppercase font-semibold tracking-wider">
-                Free Trial Now
-              </button>
-            </div>
-          </div>
-        </nav>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
